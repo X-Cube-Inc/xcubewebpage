@@ -1,118 +1,183 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import Link from 'next/link'
 
-const inter = Inter({ subsets: ["latin"] });
+import useScroll from '@/hooks/useScroll'
 
-export default function Home() {
+import { classNames } from '@/utils'
+
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import Container from '@/components/Container'
+
+export default function Home () {
+  const { scrollY } = useScroll()
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+      <Navbar
+        isScrollActive={scrollY > 0}
+        defaultBackgroundColor='bg-transparent'
+        activeBackgroundColor='bg-subwayRoute-capitalRegion-shinbundang'
+      />
+      <div
+        className={classNames(
+          'min-h-screen text-white',
+          'bg-no-repeat bg-cover bg-center'
+        )}
+        style={{
+          backgroundImage: 'url(/assets/metrophics_240103_ktx-cheongryong__gyeongbokgung.png)'
+        }}
+      >
+        <div className='w-full min-h-screen bg-gradient-to-t from-black/80 to-transparent'>
+          <Container className='min-h-screen'>
+            <div className='min-h-screen flex p-10'>
+              <div className='self-end lg:space-y-0 space-y-4 flex lg:flex-row flex-col lg:justify-between w-full'>
+                <div className='lg:self-end'>
+                  <p className='font-bold text-4xl'>Korea Train Database</p>
+                  <p className='font-light text-2xl'>한국 철도 데이터베이스</p>
+                </div>
+                <div className='lg:self-end'>
+                  <p className='font-bold text-lg'>Picture by MetroPhics - Gyeongbokgung</p>
+                  <p className='font-light text-base'>OpenBVE - KTX CheongRyong</p>
+                </div>
+              </div>
+            </div>
+          </Container>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className='px-10 py-4 text-head bg-lightGrey'>
+        <Container>
+          <div className='flex lg:flex-row flex-col justify-between gap-4'>
+            <RouteItem
+              to='/open-bve'
+              title='OpenBVE'
+              subtitle='Add-on'
+              imageUrl='/assets/metrophics_240103_ktx-cheongryong__gyeongbokgung.png'
+            />
+            <RouteItem
+              to='/information/route'
+              title='노선 정보'
+              subtitle='Route Information'
+              imageUrl='/assets/naver_subway.jpg'
+            />
+            <RouteItem
+              to='/information/station'
+              title='역 정보'
+              subtitle='Station Information'
+              imageUrl='/assets/metrophics_240103_ktx-cheongryong__gyeongbokgung.png'
+            />
+          </div>
+        </Container>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className='px-10 py-4 text-head'>
+        <Container>
+          <div>
+            <p className='font-bold text-lg'>Update Log</p>
+            <p className='font-light'>업데이트 로그</p>
+          </div>
+          <div className='bg-korail-coolGray/25 w-full h-px my-4' />
+          <div>
+            <UpdateLogBody version='3.0'>
+              <UpdateLogItem type='add' head='OpenBVE 데이터베이스' message='호남고속선 SRT' />
+            </UpdateLogBody>
+            <div className='bg-korail-coolGray/10 w-full h-px my-4' />
+            <UpdateLogBody version='3.0-Beta2'>
+              <UpdateLogItem type='add' head='역 데이터베이스' message='동대구역 (일부)' />
+              <UpdateLogItem type='edit' head='명칭 수정' message='[SRT/GTX] 동탄역 → [수서평택고속선] 동탄역' />
+            </UpdateLogBody>
+          </div>
+        </Container>
       </div>
-    </main>
-  );
+      <Footer />
+    </div>
+  )
+}
+
+function UpdateLogBody ({ children, version }: { children: React.ReactNode | React.ReactNode[], version: string }) {
+  return (
+    <div className='h-full w-full'>
+      <div className='flex lg:flex-row flex-col h-full w-full'>
+        <div className='lg:w-[120px] w-full h-full font-bold self-start lg:text-base text-lg'>
+          <p>{version}</p>
+        </div>
+        <div className='space-y-2 lg:mt-0 mt-1'>
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function UpdateLogItem ({ type, head, message }: { type: 'add' | 'edit' | 'remove', head: string, message: string }) {
+  const baseClassName = 'flex px-2 py-1 rounded-md space-x-2 w-fit h-fit lg:mt-0 -mt-1'
+
+  return (
+    <div className='flex lg:flex-row flex-col gap-1'>
+      <p className='self-center lg:w-[200px] w-full'>{head}</p>
+      <div
+        className={classNames(
+          type === 'add'
+            ? classNames(baseClassName, 'bg-green-400/50 text-green-800')
+            : type === 'edit'
+              ? classNames(baseClassName, 'bg-yellow-400/50 text-yellow-800')
+              : type === 'remove'
+                ? classNames(baseClassName, 'bg-red-400/50 text-red-800')
+                : classNames(baseClassName, 'bg-placeholder/25 text-head')
+        )}
+      >
+        <p className='font-bold'>
+          {
+            type === 'add'
+              ? '+'
+              : type === 'edit'
+                ? '#'
+                : type === 'remove'
+                  ? '-'
+                  : '?'
+          }
+        </p>
+        <p>{message}</p>
+      </div>
+    </div>
+  )
+}
+
+function RouteItem ({
+  to,
+  gradientColor = 'from-black/80',
+  title,
+  subtitle,
+  imageUrl
+}: {
+  to: string
+  gradientColor?: string,
+  title: string,
+  subtitle: string,
+  imageUrl: string
+}) {
+  return (
+    <Link href={to} className='w-full h-full'>
+      <div
+        className={classNames(
+          'h-[200px] w-full rounded-[10px]',
+          'bg-center bg-cover bg-no-repeat',
+          'hover:scale-[1.02]',
+          'border-[1px] border-basicGrey shadow-md'
+        )}
+        style={{
+          backgroundImage: `url(${imageUrl})`
+        }}
+      >
+        <div className={classNames(
+          'flex h-full px-4 py-3 rounded-[10px]',
+          'bg-gradient-to-t to-transparent',
+          gradientColor
+        )}>
+          <div className='self-end text-white'>
+            <p className='font-bold text-lg'>{title}</p>
+            <p className='font-light'>{subtitle}</p>
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
 }

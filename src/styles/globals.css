@@ -2,32 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+/* :root {
+  --primary-100:#1F3A5F;
+  --primary-200:#4d648d;
+  --primary-300:#acc2ef;
+  --accent-100:#3D5A80;
+  --accent-200:#cee8ff;
+  --text-100:#FFFFFF;
+  --text-200:#e0e0e0;
+  --bg-100:#0F1C2E;
+  --bg-200:#1f2b3e;
+  --bg-300:#374357;
+} */
+
+html, body {
+	margin: 0;
+	height: 100%;
+  /* Pretendard font family : https://ungveloper.tistory.com/16 */
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif !important;
+  --scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
+  background: #e6e8ec;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html { user-select: none }
+
+/*
+  Line Height tight # 문단 간 간격을 줄였습니다.
+  element animation # 모든 요소에 에니메이션 효과를 적용하였습니다.
+*/
+* {
+  line-height: 1.25;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0.2, 1);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* 뒷면 요소 숨기기 */
+.backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* 원근법 */
+.perspective {
+  perspective: 1000;
+}
+
+.perspective-origin {
+  perspective-origin: 100% 100%;
 }

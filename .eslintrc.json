@@ -1,3 +1,37 @@
 {
-  "extends": "next/core-web-vitals"
-}
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true,
+        "es6": true
+    },
+    "extends": [
+        "standard",
+        "eslint:recommended",
+        "next/core-web-vitals",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:security/recommended"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+        "@typescript-eslint/indent": ["warn", 2],
+        "quotes": ["warn", "single"],
+        "jsx-quotes": ["warn", "prefer-single"],
+        "no-use-before-define": 0,
+        "@typescript-eslint/explicit-module-boundary-types": 0,
+        "react/prop-types": 0,
+        "react/react-in-jsx-scope": 0,
+        "no-new": 0,
+        "space-before-function-paren": 0,
+        "camelcase": 0,
+        "generator-star-spacing": 0,
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "indent": "off"
+    }
+  }
