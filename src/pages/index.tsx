@@ -9,8 +9,6 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Container from '@/components/Container'
 
-import { UpdateLogProps } from '@/types'
-
 import updateLogs from '../../update-log.json'
 
 export default function Home () {
