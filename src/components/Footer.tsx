@@ -8,7 +8,7 @@ export default function Footer () {
   })
 
   return (
-    <div className='w-full bg-lightGrey pt-10 pb-20 px-10'>
+    <div className='w-full bg-white pt-10 pb-20 px-10'>
       <Container>
         <div className='text-head font-light text-sm'>
           <p className='font-semibold text-lg'>Korea Train Database</p>

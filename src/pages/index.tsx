@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { ScrollContext } from '@/context/ScrollContext'
 
@@ -10,6 +11,8 @@ import Footer from '@/components/Footer'
 import Container from '@/components/Container'
 
 import updateLogs from '../../update-log.json'
+
+import ScrollDownIcon from '@/public/icon_scroll-down.svg'
 
 export default function Home () {
   const context = useContext(ScrollContext)
@@ -23,16 +26,17 @@ export default function Home () {
       />
       <div
         className={classNames(
+          'relative',
           'min-h-screen text-white',
           'bg-no-repeat bg-cover bg-center'
         )}
         style={{
-          backgroundImage: 'url(/assets/metrophics_240103_ktx-cheongryong__gyeongbokgung.png)'
+          backgroundImage: 'url(/assets/railway_ktx-cheongryong_metrophics__gyeongbokgung.png)'
         }}
       >
         <div className='w-full min-h-screen bg-gradient-to-t from-black to-transparent'>
           <Container className='min-h-screen'>
-            <div className='min-h-screen flex px-10 py-20'>
+            <div className='min-h-screen flex px-10 lg:py-20 py-28'>
               <div className='self-end lg:space-y-0 space-y-4 flex lg:flex-row flex-col lg:justify-between w-full'>
                 <div className='lg:self-end'>
                   <p className='font-bold text-4xl'>Korea Train Database</p>
@@ -46,15 +50,18 @@ export default function Home () {
             </div>
           </Container>
         </div>
+        <div className='absolute left-0 right-0 bottom-2 w-fit h-fit mx-auto'>
+          <Image alt='icon' src={ScrollDownIcon} className='size-[100px] animate-pulse' />
+        </div>
       </div>
-      <div className='px-10 py-4 text-head bg-lightGrey'>
+      <div className='p-4 text-head bg-lightGrey'>
         <Container>
-          <div className='flex lg:flex-row flex-col justify-between gap-4'>
+          <div className='flex md:flex-row flex-col justify-between gap-4'>
             <RouteItem
               to='/open-bve'
-              title='OpenBVE'
-              subtitle='Add-on'
-              imageUrl='/assets/metrophics_240103_ktx-cheongryong__gyeongbokgung.png'
+              title='OpenBVE 애드온'
+              subtitle='OpenBVE Add-on'
+              imageUrl='/assets/railway_ktx-cheongryong_metrophics__gyeongbokgung.png'
             />
             <RouteItem
               to='/information/route'
@@ -66,43 +73,45 @@ export default function Home () {
               to='/information/station'
               title='역 정보'
               subtitle='Station Information'
-              imageUrl='/assets/metrophics_240103_ktx-cheongryong__gyeongbokgung.png'
+              imageUrl='/assets/subway-express_capitalRegion_DongIncehon-Guro__bve-data.png'
             />
           </div>
         </Container>
       </div>
-      <div className='px-10 py-4 text-head'>
+      <div className='p-4 text-head '>
         <Container>
-          <div>
-            <p className='font-bold text-lg'>Update Log</p>
-            <p className='font-light'>업데이트 로그</p>
-          </div>
-          <div className='bg-korail-coolGray/25 w-full h-px my-4' />
-          <div>
-            {
-              updateLogs.datas.map((value, idx) => (
-                <>
-                  <UpdateLogBody
-                    key={createUniqueUUIDKey()}
-                    version={value.version}
-                  >
+          <div className='bg-white px-4 py-2 border-[1px] border-basicGrey rounded-[10px]'>
+            <div>
+              <p className='font-bold text-lg'>Update Log</p>
+              <p className='font-light'>업데이트 로그</p>
+            </div>
+            <div className='bg-korail-coolGray/25 w-full h-px my-4' />
+            <div className='mb-2'>
+              {
+                updateLogs.datas.map((value, idx) => (
+                  <>
+                    <UpdateLogBody
+                      key={createUniqueUUIDKey()}
+                      version={value.version}
+                    >
+                      {
+                        value.details.map((detail) => (
+                          <UpdateLogItem
+                            key={createUniqueUUIDKey()}
+                            type={detail.type as 'add' | 'edit' | 'remove'}
+                            head={detail.head}
+                            message={detail.message}
+                          />
+                        ))
+                      }
+                    </UpdateLogBody>
                     {
-                      value.details.map((detail) => (
-                        <UpdateLogItem
-                          key={createUniqueUUIDKey()}
-                          type={detail.type as 'add' | 'edit' | 'remove'}
-                          head={detail.head}
-                          message={detail.message}
-                        />
-                      ))
+                      updateLogs.datas.length - 1 !== idx && <div className='bg-korail-coolGray/10 w-full h-px my-4' />
                     }
-                  </UpdateLogBody>
-                  {
-                    updateLogs.datas.length + 1 !== idx && <div className='bg-korail-coolGray/10 w-full h-px my-4' />
-                  }
-                </>
-              ))
-            }
+                  </>
+                ))
+              }
+            </div>
           </div>
         </Container>
       </div>
@@ -114,11 +123,11 @@ export default function Home () {
 function UpdateLogBody ({ children, version }: { children: React.ReactNode | React.ReactNode[], version: string }) {
   return (
     <div className='h-full w-full'>
-      <div className='flex lg:flex-row flex-col h-full w-full'>
-        <div className='lg:w-[120px] w-full h-full font-bold self-start lg:text-base text-lg lg:pt-1'>
+      <div className='flex md:flex-row flex-col h-full w-full'>
+        <div className='md:w-[120px] w-full h-full font-bold self-start md:text-base text-lg md:pt-1'>
           <p>{version}</p>
         </div>
-        <div className='space-y-2 lg:mt-0 mt-1'>
+        <div className='space-y-2 md:mt-0 mt-1'>
           {children}
         </div>
       </div>
@@ -127,11 +136,11 @@ function UpdateLogBody ({ children, version }: { children: React.ReactNode | Rea
 }
 
 function UpdateLogItem ({ type, head, message }: { type: 'add' | 'edit' | 'remove', head: string, message: string }) {
-  const baseClassName = 'flex px-2 py-1 rounded-md space-x-2 w-fit h-fit lg:mt-0 -mt-1'
+  const baseClassName = 'flex px-2 py-1 rounded-md space-x-2 w-fit h-fit md:mt-0 -mt-1'
 
   return (
-    <div className='flex lg:flex-row flex-col gap-1'>
-      <p className='self-center lg:w-[200px] w-full'>{head}</p>
+    <div className='flex md:flex-row flex-col gap-1'>
+      <p className='self-center md:w-[200px] w-full'>{head}</p>
       <div
         className={classNames(
           type === 'add'

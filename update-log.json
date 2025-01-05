@@ -1,6 +1,16 @@
 {
     "datas": [
         {
+            "version": "3.1",
+            "details": [
+                {
+                    "type": "add",
+                    "head": "웹사이트",
+                    "message": "웹사이트 UX/UI 개편"
+                }
+            ]
+        },
+        {
             "version": "3.0",
             "details": [
                 {
