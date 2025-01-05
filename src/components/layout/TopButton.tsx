@@ -13,7 +13,7 @@ export default function TopButton ({ isActiveScroll }: { isActiveScroll: boolean
           className={classNames(
             'fixed w-[50px] h-[50px] bg-white group hover:bg-subwayRoute-capitalRegion-shinbundang rounded-full',
             'border-[1px] border-subwayRoute-capitalRegion-shinbundang shadow-md',
-            'lg:right-[80px] right-[40px] bottom-[100px] cursor-pointer',
+            'lg:right-[80px] right-[40px] bottom-[40px] cursor-pointer',
             'transition duration-[300ms] ease-in-out',
             isActiveScroll ? 'opacity-100' : 'opacity-0'
           )}
