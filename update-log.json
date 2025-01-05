@@ -1,0 +1,29 @@
+{
+    "datas": [
+        {
+            "version": "3.0",
+            "details": [
+                {
+                    "type": "add",
+                    "head": "OpenBVE 데이터베이스",
+                    "message": "호남고속선 SRT"
+                }
+            ]
+        },
+        {
+            "version": "3.0-Beta2",
+            "details": [
+                {
+                    "type": "add",
+                    "head": "역 데이터베이스",
+                    "message": "동대구역 (일부)"
+                },
+                {
+                    "type": "edit",
+                    "head": "명칭 수정",
+                    "message": "[SRT/GTX] 동탄역 → [수서평택고속선] 동탄역"
+                }
+            ]
+        }
+    ]
+}

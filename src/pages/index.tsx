@@ -3,11 +3,15 @@ import Link from 'next/link'
 
 import { ScrollContext } from '@/context/ScrollContext'
 
-import { classNames } from '@/utils'
+import { classNames, createUniqueUUIDKey } from '@/utils'
 
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Container from '@/components/Container'
+
+import { UpdateLogProps } from '@/types'
+
+import updateLogs from '../../update-log.json'
 
 export default function Home () {
   const context = useContext(ScrollContext)
@@ -77,14 +81,30 @@ export default function Home () {
           </div>
           <div className='bg-korail-coolGray/25 w-full h-px my-4' />
           <div>
-            <UpdateLogBody version='3.0'>
-              <UpdateLogItem type='add' head='OpenBVE 데이터베이스' message='호남고속선 SRT' />
-            </UpdateLogBody>
-            <div className='bg-korail-coolGray/10 w-full h-px my-4' />
-            <UpdateLogBody version='3.0-Beta2'>
-              <UpdateLogItem type='add' head='역 데이터베이스' message='동대구역 (일부)' />
-              <UpdateLogItem type='edit' head='명칭 수정' message='[SRT/GTX] 동탄역 → [수서평택고속선] 동탄역' />
-            </UpdateLogBody>
+            {
+              updateLogs.datas.map((value, idx) => (
+                <>
+                  <UpdateLogBody
+                    key={createUniqueUUIDKey()}
+                    version={value.version}
+                  >
+                    {
+                      value.details.map((detail) => (
+                        <UpdateLogItem
+                          key={createUniqueUUIDKey()}
+                          type={detail.type as 'add' | 'edit' | 'remove'}
+                          head={detail.head}
+                          message={detail.message}
+                        />
+                      ))
+                    }
+                  </UpdateLogBody>
+                  {
+                    updateLogs.datas.length + 1 !== idx && <div className='bg-korail-coolGray/10 w-full h-px my-4' />
+                  }
+                </>
+              ))
+            }
           </div>
         </Container>
       </div>
@@ -162,7 +182,8 @@ function RouteItem ({
           'h-[200px] w-full rounded-[10px]',
           'bg-center bg-cover bg-no-repeat',
           'hover:scale-[1.02]',
-          'border-[1px] border-basicGrey shadow-md'
+          'border-[1px] border-basicGrey shadow-md',
+          'transition duration-300 ease-in-out'
         )}
         style={{
           backgroundImage: `url(${imageUrl})`
