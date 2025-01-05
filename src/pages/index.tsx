@@ -1,6 +1,7 @@
+import { useContext } from 'react'
 import Link from 'next/link'
 
-import useScroll from '@/hooks/useScroll'
+import { ScrollContext } from '@/context/ScrollContext'
 
 import { classNames } from '@/utils'
 
@@ -9,12 +10,12 @@ import Footer from '@/components/Footer'
 import Container from '@/components/Container'
 
 export default function Home () {
-  const { scrollY } = useScroll()
+  const context = useContext(ScrollContext)
 
   return (
     <div>
       <Navbar
-        isScrollActive={scrollY > 0}
+        isScrollActive={context > 0}
         defaultBackgroundColor='bg-transparent'
         activeBackgroundColor='bg-subwayRoute-capitalRegion-shinbundang'
       />
@@ -27,9 +28,9 @@ export default function Home () {
           backgroundImage: 'url(/assets/metrophics_240103_ktx-cheongryong__gyeongbokgung.png)'
         }}
       >
-        <div className='w-full min-h-screen bg-gradient-to-t from-black/80 to-transparent'>
+        <div className='w-full min-h-screen bg-gradient-to-t from-black to-transparent'>
           <Container className='min-h-screen'>
-            <div className='min-h-screen flex p-10'>
+            <div className='min-h-screen flex px-10 py-20'>
               <div className='self-end lg:space-y-0 space-y-4 flex lg:flex-row flex-col lg:justify-between w-full'>
                 <div className='lg:self-end'>
                   <p className='font-bold text-4xl'>Korea Train Database</p>
@@ -96,7 +97,7 @@ function UpdateLogBody ({ children, version }: { children: React.ReactNode | Rea
   return (
     <div className='h-full w-full'>
       <div className='flex lg:flex-row flex-col h-full w-full'>
-        <div className='lg:w-[120px] w-full h-full font-bold self-start lg:text-base text-lg'>
+        <div className='lg:w-[120px] w-full h-full font-bold self-start lg:text-base text-lg lg:pt-1'>
           <p>{version}</p>
         </div>
         <div className='space-y-2 lg:mt-0 mt-1'>
