@@ -51,7 +51,7 @@ export default function Navbar ({
     <header
       className={classNames(
         'fixed z-10 w-full h-[80px] text-white px-10',
-        'transition duration-[500ms] ease-in-out',
+        'transition duration-500 ease-in-out',
         isScrollActive
           ? classNames(
             activeBackgroundColor,
