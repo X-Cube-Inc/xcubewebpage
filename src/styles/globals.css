@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css");
+*/
 
-/* :root {
+@import url("https://static.toss.im/tossface-font/tossface.css");
+
+:root {
   --primary-100:#1F3A5F;
   --primary-200:#4d648d;
   --primary-300:#acc2ef;
@@ -15,16 +20,22 @@
   --bg-100:#0F1C2E;
   --bg-200:#1f2b3e;
   --bg-300:#374357;
-} */
+
+  --background-color:#f0f0f0;
+}
 
 html, body {
 	margin: 0;
 	height: 100%;
   /* Pretendard font family : https://ungveloper.tistory.com/16 */
-  font-family: "Pretendard", system-ui, -apple-system, sans-serif !important;
+  /* font-family: "Pretendard", Pretendard, -apple-system, system-ui, sans-serif !important; */
   --scroll-behavior: smooth !important;
   scroll-behavior: smooth !important;
-  background: #e6e8ec;
+  background: #f0f0f0;
+}
+
+font-tossface {
+  font-family: 'Tossface', Tossface !important;
 }
 
 html { user-select: none }
@@ -52,4 +63,45 @@ html { user-select: none }
 
 .perspective-origin {
   perspective-origin: 100% 100%;
+}
+
+.bg-dotted-pattern {
+  background: linear-gradient(90deg, #f0f0f0 20.6px, transparent 1%) center, linear-gradient(#f0f0f0 20.6px, transparent 1%) center, #014B8C;
+  background-size: 22px 22px;
+}
+
+.bg-gradient-overlay {
+  background: linear-gradient(-45deg, #02ABEE, #F6D200, #8F7EAB);
+  background-size: 300% 300%;
+  animation: gradient 18s ease-in-out infinite;
+}
+
+.bg-gradient-animation {
+  background: linear-gradient(-45deg, #014B8C, #0078AD, #02ABEE);
+  background-size: 300% 300%;
+  animation: gradient 15s ease-in-out infinite;
+}
+
+.bg-radial-gradient {
+  background: radial-gradient(circle at top, #02ABEE, #014B8C);
+  background-size: 300% 300%;
+  background-position: center;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+  25% {
+    background-position: 50% 50%;
+  }
+	50% {
+		background-position: 100% 50%;
+	}
+  75% {
+    background-position: 50% 50%;
+  }
+	100% {
+		background-position: 0% 50%;
+	}
 }

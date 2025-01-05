@@ -4,19 +4,20 @@ export default function TopButton ({ isActiveScroll }: { isActiveScroll: boolean
   return (
     <div
       className={classNames(
-        'fixed z-[10] top-0 bottom-0 left-0 right-0 cursor-pointer',
-        'w-[1600px] h-full mx-auto transition duration-[300ms] ease-in-out',
-        isActiveScroll ? 'opacity-100' : 'opacity-0'
+        'fixed top-0 bottom-0 left-0 right-0',
+        'w-fit h-fit mx-auto'
       )}
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
       <div className='relative w-full h-full'>
         <div
           className={classNames(
-            'absolute w-[50px] h-[50px] bg-white group hover:bg-subwayRoute-capitalRegion-shinbundang rounded-full',
+            'fixed w-[50px] h-[50px] bg-white group hover:bg-subwayRoute-capitalRegion-shinbundang rounded-full',
             'border-[1px] border-subwayRoute-capitalRegion-shinbundang shadow-md',
-            'right-10 bottom-10'
+            'lg:right-[80px] right-[40px] bottom-[100px] cursor-pointer',
+            'transition duration-[300ms] ease-in-out',
+            isActiveScroll ? 'opacity-100' : 'opacity-0'
           )}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <div className='w-full h-full flex justify-center'>
             <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='size-5 self-center text-head group-hover:text-white'>
