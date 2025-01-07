@@ -1,7 +1,7 @@
 import { NextSeoProps } from 'next-seo'
 
 const title = '한국 철도 데이터베이스'
-const description = '한국 철도 데이터베이스 | X-Cube'
+const description = '대한민국의 지하철, 기차 등 철도에 관한 모든 정보를 다루는 KTD, 한국 철도 데이터베이스에서 만나보세요.'
 const url = 'http://ungbeom.iptime.org:3000'
 
 const config: NextSeoProps = {
@@ -30,7 +30,7 @@ const config: NextSeoProps = {
     },
     {
       name: 'author',
-      content: 'ICBM Labs Researchers'
+      content: 'Ungbeom-Kang'
     },
     {
       name: 'application-name',

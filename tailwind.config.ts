@@ -9,7 +9,7 @@ delete DefaultColors.trueGray
 delete DefaultColors.coolGray
 delete DefaultColors.blueGray
 
-const SubwayRouteColor = {
+export const SubwayRouteColor = {
   capitalRegion: {
     line1: 'rgb(38, 60, 150)', // 1호선
     line2: 'rgb(60, 180, 74)', // 2호선
@@ -58,7 +58,7 @@ const SubwayRouteColor = {
   }
 }
 
-const KorailColor = {
+export const KorailColor = {
   blue: 'rgb(0, 61, 165)',
   lightBlue: 'rgb(0, 181, 226)',
   coolGray: 'rgb(117, 120, 123)',

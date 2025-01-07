@@ -1,16 +1,19 @@
 import { useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { NextSeo } from 'next-seo'
 
 import { ScrollContext } from '@/context/ScrollContext'
 
 import { classNames, createUniqueUUIDKey } from '@/utils'
 
+import { UpdateLogProps } from '@/types'
+
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Container from '@/components/Container'
 
-import updateLogs from '../../update-log.json'
+import updateLogs from '@/structures/update-log.json'
 
 import ScrollDownIcon from '@/public/icon_scroll-down.svg'
 
@@ -19,6 +22,7 @@ export default function Home () {
 
   return (
     <div>
+      <NextSeo title='홈' /* themeColor='#a71e31' */ />
       <Navbar
         isScrollActive={context > 0}
         defaultBackgroundColor='bg-transparent'
@@ -31,7 +35,7 @@ export default function Home () {
           'bg-no-repeat bg-cover bg-center'
         )}
         style={{
-          backgroundImage: 'url(/assets/railway_ktx-cheongryong_metrophics__gyeongbokgung.png)'
+          backgroundImage: 'url(/assets/railway_ktx-cheongryong__metrophics-gyeongbokgung.png)'
         }}
       >
         <div className='w-full min-h-screen bg-gradient-to-t from-black to-transparent'>
@@ -39,12 +43,12 @@ export default function Home () {
             <div className='min-h-screen flex px-10 lg:py-20 py-28'>
               <div className='self-end lg:space-y-0 space-y-4 flex lg:flex-row flex-col lg:justify-between w-full'>
                 <div className='lg:self-end'>
-                  <p className='font-bold text-4xl'>Korea Train Database</p>
-                  <p className='font-light text-2xl'>한국 철도 데이터베이스</p>
+                  <p className='font-bold lg:text-4xl text-3xl'>Korea Train Database</p>
+                  <p className='font-light lg:text-2xl text-xl'>한국 철도 데이터베이스</p>
                 </div>
-                <div className='lg:self-end'>
-                  <p className='font-bold text-lg'>Picture by MetroPhics - Gyeongbokgung</p>
-                  <p className='font-light text-base'>OpenBVE - KTX CheongRyong</p>
+                <div className='lg:self-end text-right'>
+                  <p className='font-bold lg:text-lg text-base'>Picture by MetroPhics - Gyeongbokgung</p>
+                  <p className='font-light lg:text-base text-sm'>OpenBVE - KTX CheongRyong</p>
                 </div>
               </div>
             </div>
@@ -61,7 +65,7 @@ export default function Home () {
               to='/open-bve'
               title='OpenBVE 애드온'
               subtitle='OpenBVE Add-on'
-              imageUrl='/assets/railway_ktx-cheongryong_metrophics__gyeongbokgung.png'
+              imageUrl='/assets/railway_ktx-cheongryong__metrophics-gyeongbokgung.png'
             />
             <RouteItem
               to='/information/route'
@@ -88,7 +92,7 @@ export default function Home () {
             <div className='bg-korail-coolGray/25 w-full h-px my-4' />
             <div className='mb-2'>
               {
-                updateLogs.datas.map((value, idx) => (
+                (updateLogs.datas as UpdateLogProps[]).map((value, idx) => (
                   <>
                     <UpdateLogBody
                       key={createUniqueUUIDKey()}
@@ -197,13 +201,13 @@ function RouteItem ({
         }}
       >
         <div className={classNames(
-          'flex h-full px-4 py-3 rounded-[10px]',
+          'flex h-full p-6 rounded-[10px]',
           'bg-gradient-to-t to-transparent',
           gradientColor
         )}>
           <div className='self-end text-white'>
             <p className='font-bold text-lg'>{title}</p>
-            <p className='font-light'>{subtitle}</p>
+            <p className='font-light -mt-1'>{subtitle}</p>
           </div>
         </div>
       </div>
