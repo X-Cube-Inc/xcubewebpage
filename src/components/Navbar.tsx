@@ -119,8 +119,6 @@ function RouteComponent ({
       : 'text-basicGrey/50'
   )
 
-  console.log(router.pathname)
-
   return (
     disabled
       ? <div

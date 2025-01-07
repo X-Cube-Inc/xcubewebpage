@@ -45,7 +45,7 @@ export default function OpenBVE () {
                 <div className='lg:self-end text-right'>
                   <p className='font-bold lg:text-lg text-base'>Picture by BVE_Data</p>
                   <div className='font-light'>
-                    <p className='lg:text-base text-sm'>OpenBVE - Capital Region Subway Line 1 Express</p>
+                    <p className='lg:text-base text-sm'>Capital Region Subway Line 1 Express</p>
                     <p className='lg:text-sm text-xs'>Dongincheon - Guro</p>
                   </div>
                 </div>
@@ -81,22 +81,9 @@ function ItemCard ({
   subtitle,
   route,
   image,
-  updateAt
-}: {
-  to: string
-  target?: React.HTMLAttributeAnchorTarget,
-  head?: string
-  title: string
-  subtitle?: string
-  route: string
-  image: {
-    url: string
-    author: string
-    title: string
-    route: string
-  }
-  updateAt?: string
-}) {
+  createdAt,
+  updatedAt
+}: OpenBVEProps) {
   return (
     <Link href={to} target={target}>
       <div
@@ -111,19 +98,27 @@ function ItemCard ({
         }}
       >
         <div className='flex justify-between px-4 py-4 h-full'>
-          <div className='font-medium h-full w-full'>
-            <p className='text-sm'>{head}</p>
-            <div className='my-4'>
-              <p className='font-bold text-xl'>{title}{subtitle && <sup className='uppercase ml-1 font-normal text-sm'>{subtitle}</sup>}</p>
-              <p>{route}</p>
+          <div className='font-medium h-full w-full flex flex-col justify-between'>
+            <p className='lg:text-sm text-xs'>{head}</p>
+            <div className=''>
+              <p className='font-bold lg:text-xl text-lg'>{title}{subtitle && <sup className='uppercase ml-1 font-normal text-xs'>{subtitle}</sup>}</p>
+              <p className='lg:text-base text-sm'>{route}</p>
             </div>
-            {updateAt && <p className='text-basicGrey text-sm'>{updateAt} 업데이트</p>}
+            <p className='text-basicGrey lg:text-sm text-xs'>
+              {
+                updatedAt
+                  ? `${updatedAt} 업데이트`
+                  : createdAt
+                    ? `${createdAt} 출시`
+                    : ''
+              }
+            </p>
           </div>
           <div className='self-end w-full text-right'>
-            <p className='font-bold text-sm'>Picture by {image.author}</p>
-            <div className='font-light'>
-              <p className='text-xs'>{image.title}</p>
-              <p className='text-xs'>{image.route}</p>
+            <p className='font-bold lg:text-sm text-xs'>Picture by {image.author}</p>
+            <div className='font-light lg:text-xs text-[10px]'>
+              <p>{image.title}</p>
+              <p>{image.route}</p>
             </div>
             <p></p>
           </div>

@@ -11,7 +11,9 @@
                 "author": "BVE_data",
                 "title": "Capital Region Subway Line 1 Express",
                 "route": "Dongincheon - Guro"
-            }
+            },
+            "createdAt": "2017. 03. 10",
+            "updatedAt": ""
         },
         {
             "to": "https://www.redwingspace.com/bve/data/honam-srt/download",
@@ -24,7 +26,9 @@
                 "author": "RedWing",
                 "title": "Honam Expressway SRT",
                 "route": "Gwangju-Songjeong - Suseo"
-            }
+            },
+            "createdAt": "2024. 05. 01",
+            "updatedAt": "2024. 05. 03"
         },
         {
             "to": "https://cafe.naver.com/skyrailway/141813",
@@ -38,7 +42,9 @@
                 "author": "Yangpyeong",
                 "title": "Honam Expressway SRT Patch",
                 "route": "Mokpo - Gwangju-Songjeong"
-            }
+            },
+            "createdAt": "2024. 05. 03",
+            "updatedAt": ""
         }
     ]
 }

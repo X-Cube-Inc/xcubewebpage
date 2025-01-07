@@ -6,6 +6,8 @@ export interface OpenBVEProps {
   subtitle?: string
   route: string
   image: OpenBVEImageProps
+  createdAt?: string
+  updatedAt?: string
 }
 
 export interface OpenBVEImageProps {

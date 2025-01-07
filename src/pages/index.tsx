@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { Fragment, useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
@@ -48,7 +48,7 @@ export default function Home () {
                 </div>
                 <div className='lg:self-end text-right'>
                   <p className='font-bold lg:text-lg text-base'>Picture by MetroPhics - Gyeongbokgung</p>
-                  <p className='font-light lg:text-base text-sm'>OpenBVE - KTX CheongRyong</p>
+                  <p className='font-light lg:text-base text-sm'>KTX CheongRyong</p>
                 </div>
               </div>
             </div>
@@ -93,11 +93,8 @@ export default function Home () {
             <div className='mb-2'>
               {
                 (updateLogs.datas as UpdateLogProps[]).map((value, idx) => (
-                  <>
-                    <UpdateLogBody
-                      key={createUniqueUUIDKey()}
-                      version={value.version}
-                    >
+                  <Fragment key={createUniqueUUIDKey()}>
+                    <UpdateLogBody version={value.version}>
                       {
                         value.details.map((detail) => (
                           <UpdateLogItem
@@ -112,7 +109,7 @@ export default function Home () {
                     {
                       updateLogs.datas.length - 1 !== idx && <div className='bg-korail-coolGray/10 w-full h-px my-4' />
                     }
-                  </>
+                  </Fragment>
                 ))
               }
             </div>
