@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 
-import { ScrollContext } from '@/context/ScrollContext'
+import { ScrollContext } from '@/context'
 
 import { classNames, createUniqueUUIDKey } from '@/utils'
 
@@ -41,7 +41,7 @@ export default function Home () {
         <div className='w-full min-h-screen bg-gradient-to-t from-black to-transparent'>
           <Container className='min-h-screen'>
             <div className='min-h-screen flex px-10 lg:py-20 py-28'>
-              <div className='self-end lg:space-y-0 space-y-4 flex lg:flex-row flex-col lg:justify-between w-full'>
+              <div className='self-end gap-4 flex lg:flex-row flex-col lg:justify-between w-full'>
                 <div className='lg:self-end'>
                   <p className='font-bold lg:text-4xl text-3xl'>Korea Train Database</p>
                   <p className='font-light lg:text-2xl text-xl'>한국 철도 데이터베이스</p>
@@ -55,10 +55,10 @@ export default function Home () {
           </Container>
         </div>
         <div className='absolute left-0 right-0 bottom-2 w-fit h-fit mx-auto'>
-          <Image alt='icon' src={ScrollDownIcon} className='size-[100px] animate-pulse' />
+          <Image alt='icon' src={ScrollDownIcon} className='size-[100px] animate-pulse' fetchPriority='high' />
         </div>
       </div>
-      <div className='p-4 text-head bg-lightGrey'>
+      <div className='p-4 text-head'>
         <Container>
           <div className='flex md:flex-row flex-col justify-between gap-4'>
             <RouteItem
@@ -82,14 +82,14 @@ export default function Home () {
           </div>
         </Container>
       </div>
-      <div className='p-4 text-head '>
+      <div className='p-4 text-head dark:text-white'>
         <Container>
-          <div className='bg-white px-4 py-2 border-[1px] border-basicGrey rounded-[10px]'>
+          <div className='bg-white dark:bg-discord-dark2 px-4 py-2 border-[1px] border-basicGrey dark:border-basicGrey/15 rounded-[10px]'>
             <div>
               <p className='font-bold text-lg'>Update Log</p>
-              <p className='font-light'>업데이트 로그</p>
+              <p className='font-light -mt-1'>업데이트 로그</p>
             </div>
-            <div className='bg-korail-coolGray/25 w-full h-px my-4' />
+            <div className='bg-placeholder/25 w-full h-px my-4' />
             <div className='mb-2'>
               {
                 (updateLogs.datas as UpdateLogProps[]).map((value, idx) => (
@@ -107,7 +107,7 @@ export default function Home () {
                       }
                     </UpdateLogBody>
                     {
-                      updateLogs.datas.length - 1 !== idx && <div className='bg-korail-coolGray/10 w-full h-px my-4' />
+                      updateLogs.datas.length - 1 !== idx && <div className='bg-placeholder/15 w-full h-px my-4' />
                     }
                   </Fragment>
                 ))
@@ -137,7 +137,7 @@ function UpdateLogBody ({ children, version }: { children: React.ReactNode | Rea
 }
 
 function UpdateLogItem ({ type, head, message }: { type: 'add' | 'edit' | 'remove', head: string, message: string }) {
-  const baseClassName = 'flex px-2 py-1 rounded-md space-x-2 w-fit h-fit md:mt-0 -mt-1'
+  const baseClassName = 'flex px-2 py-1 rounded-md gap-2 w-fit h-fit md:mt-0 -mt-1'
 
   return (
     <div className='flex md:flex-row flex-col gap-1'>
@@ -145,12 +145,12 @@ function UpdateLogItem ({ type, head, message }: { type: 'add' | 'edit' | 'remov
       <div
         className={classNames(
           type === 'add'
-            ? classNames(baseClassName, 'bg-green-400/50 text-green-800')
+            ? classNames(baseClassName, 'bg-green-400/50 text-green-800 dark:bg-green-300 dark:text-green-900')
             : type === 'edit'
-              ? classNames(baseClassName, 'bg-yellow-400/50 text-yellow-800')
+              ? classNames(baseClassName, 'bg-yellow-400/50 text-yellow-800 dark:bg-yellow-300 dark:text-red-900')
               : type === 'remove'
-                ? classNames(baseClassName, 'bg-red-400/50 text-red-800')
-                : classNames(baseClassName, 'bg-placeholder/25 text-head')
+                ? classNames(baseClassName, 'bg-red-400/50 text-red-800 dark:bg-red-300 dark:text-red-900')
+                : classNames(baseClassName, 'bg-placeholder/25 text-head dark:bg-basicGrey/70')
         )}
       >
         <p className='font-bold'>
@@ -187,10 +187,9 @@ function RouteItem ({
     <Link href={to} className='w-full h-full'>
       <div
         className={classNames(
-          'h-[200px] w-full rounded-[10px]',
+          'h-[200px] w-full rounded-[10px] shadow-md',
           'bg-center bg-cover bg-no-repeat',
           'hover:scale-[1.02]',
-          'border-[1px] border-basicGrey shadow-md',
           'transition duration-300 ease-in-out'
         )}
         style={{

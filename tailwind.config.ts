@@ -77,8 +77,16 @@ export const KorailColor = {
   }
 }
 
+export const DiscordColor = {
+  dark1: 'rgb(30, 33, 36)', // #1e2124
+  dark2: 'rgb(40, 43, 48)', // #282b30
+  dark3: 'rgb(54, 57, 62)', // #36393e
+  dark4: 'rgb(66, 69, 73)' // #424549
+}
+
 const config: Config = {
   mode: 'jit',
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}'
@@ -87,8 +95,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
       },
       colors: {
         ...DefaultColors,
@@ -108,7 +115,8 @@ const config: Config = {
           100: '#e9eef8'
         },
         subwayRoute: SubwayRouteColor,
-        korail: KorailColor
+        korail: KorailColor,
+        discord: DiscordColor
       }
     }
   },

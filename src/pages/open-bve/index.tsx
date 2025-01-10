@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 
-import { ScrollContext } from '@/context/ScrollContext'
+import { ScrollContext } from '@/context'
 
 import { classNames, createUniqueUUIDKey } from '@/utils'
 
@@ -37,7 +37,7 @@ export default function OpenBVE () {
         <div className='w-full h-full bg-gradient-to-t from-black to-transparent'>
           <Container className='h-full'>
             <div className='h-full flex px-10 lg:py-20 py-10'>
-              <div className='self-end lg:space-y-0 space-y-4 flex lg:flex-row flex-col lg:justify-between w-full'>
+              <div className='self-end gap-4 flex lg:flex-row flex-col lg:justify-between w-full'>
                 <div className='lg:self-end'>
                   <p className='font-bold lg:text-4xl text-3xl'>Korea Train Database</p>
                   <p className='font-light lg:text-2xl text-xl'>OpenBVE Add-on</p>
@@ -88,7 +88,7 @@ function ItemCard ({
     <Link href={to} target={target}>
       <div
         className={classNames(
-          'w-full h-[160px] border-[1px] border-basicGrey rounded-[15px] shadow-md',
+          'w-full h-[160px] rounded-[15px] shadow-md',
           'bg-cover bg-center bg-no-repeat bg-white text-white',
           'hover:scale-[1.02]'
         )}

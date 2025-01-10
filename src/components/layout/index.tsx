@@ -2,7 +2,7 @@ import localFont from 'next/font/local'
 
 import useScroll from '@/hooks/useScroll'
 
-import { ScrollContext } from '@/context/ScrollContext'
+import { ScrollContext } from '@/context'
 
 import TopButton from './TopButton'
 

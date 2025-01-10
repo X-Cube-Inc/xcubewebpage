@@ -36,15 +36,17 @@ const Routes: RouteProps[] = [
   }
 ]
 
+interface Props {
+  isScrollActive?: boolean
+  defaultBackgroundColor?: string
+  activeBackgroundColor?: string
+}
+
 export default function Navbar ({
   isScrollActive = false,
   defaultBackgroundColor = 'bg-transparent',
   activeBackgroundColor = 'bg-subwayRoute-capitalRegion-shinbundang'
-}: {
-  isScrollActive?: boolean,
-  defaultBackgroundColor?: string,
-  activeBackgroundColor?: string,
-}) {
+}: Props) {
   const router = useRouter()
 
   return (
@@ -62,15 +64,15 @@ export default function Navbar ({
     >
       <Container className='h-full items-center'>
         <div className='flex justify-between h-full items-center'>
-          <div className='flex items-center h-full space-x-10'>
+          <div className='flex items-center h-full gap-10'>
             <Link href='/'>
               <p className='font-bold text-lg'>Korea Train Database</p>
             </Link>
-            <div className='space-x-10 lg:block hidden'>
+            <div className='gap-10 lg:block hidden'>
               {
                 router.pathname !== '/' && (
                   <>
-                    <div className='flex space-x-10 font-medium text-base h-full items-center'>
+                    <div className='flex gap-10 font-medium text-base h-full items-center'>
                       {Routes.map((el) => <RouteComponent key={createUniqueUUIDKey()} {...el} />)}
                     </div>
                   </>
